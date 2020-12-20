@@ -1,19 +1,14 @@
-import { Provider } from 'react-redux';
-import { createStore } from 'redux';
+import { useSelector } from 'react-redux';
 import './App.scss';
-import Game from './components/Game';
-import Login from './components/Login/index.js';
-import Reducer from './Reducer';
+import Game from './components/Game/Game';
+import Login from './components/Login/index';
 
-const store = createStore(Reducer);
 
 export default function App() {
+  const user = useSelector(store => store.username)
   return (
     <div>
-      <Provider store={store}>
-        <Login />
-        <Game />
-      </Provider>
+      { user ? <Game /> : <Login /> }
     </div>
   );
 }

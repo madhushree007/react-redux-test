@@ -6,6 +6,7 @@ import './login.scss';
 export default function Login () {
   const [user, setUser] = useState('');
   const dispatch = useDispatch();
+
   const onSubmit = e => {
     e.preventDefault();
     dispatch(addUser(user));

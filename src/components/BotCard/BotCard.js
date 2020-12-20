@@ -2,11 +2,12 @@ import { useEffect, useState } from 'react';
 import ReactCardFlip from 'react-card-flip';
 import { useSelector } from 'react-redux';
 
-export default function ComputerCard ({name, calculate}) {
+export default function BotCard ({name, calculate}) {
   const [isFlipped, setIsFlipped] = useState(false);
   const isCardFlipped = useSelector(store => store.isCardFlipped);
 
   useEffect(() => {
+    setIsFlipped(false);
     if(isCardFlipped) {
       const timer = setTimeout(() => {
       setIsFlipped(true);
@@ -23,7 +24,7 @@ export default function ComputerCard ({name, calculate}) {
         </div>
  
         <div>
-          <img src={"/assets/cardFront.jpg"} alt='bg' />
+          <img src={`/assets/${name}.jpg`} alt='bg' />
         </div>
       </ReactCardFlip>
   )

@@ -1,7 +1,7 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import ReactCardFlip from 'react-card-flip';
 import { useDispatch } from 'react-redux';
-import { setCardFlip } from '../actions';
+import { setCardFlip } from '../../actions';
 
 export default function Card ({name}) {
   const [isFlipped, setIsFlipped] = useState(false);
@@ -12,6 +12,10 @@ export default function Card ({name}) {
     setIsFlipped(isFlipped => !isFlipped);
     dispatch(setCardFlip(true));
   }
+
+  useEffect(() => {
+    setIsFlipped(false);
+  }, [])
   
   return (
     <ReactCardFlip isFlipped={isFlipped} flipDirection="horizontal">
@@ -20,7 +24,7 @@ export default function Card ({name}) {
         </div>
  
         <div>
-          <img src={'/assets/cardFront.jpg'} alt='front' />
+          <img src={`/assets/${name}.jpg`} alt='front' />
         </div>
       </ReactCardFlip>
   )

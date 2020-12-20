@@ -3,7 +3,7 @@ import State from './State';
 const Reducer = (state=State, action) => {
   switch(action.type) {
     case 'ADD_USER':
-      return {...state, username: action.name };
+      return {...state, username: action.username };
     case 'SET_FLIPPED':
       return {...state, isCardFlipped: action.isCardFlipped}
     case 'SET_USER_POINT':
