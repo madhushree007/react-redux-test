@@ -20,3 +20,23 @@ exports.setBotPoint = () => {
     type: "SET_BOT_POINT"
   }
 }
+exports.setGameLeft = () => {
+  return {
+    type: "SET_GAME_LEFT"
+  }
+}
+exports.resetGameLeft = () => {
+  return {
+    type: "RESET_GAME_LEFT"
+  }
+}
+exports.resetUserPoints = () => {
+  return {
+    type: "RESET_USER_POINTS"
+  }
+}
+exports.resetBotPoints = () => {
+  return {
+    type: "RESET_BOT_POINTS"
+  }
+}

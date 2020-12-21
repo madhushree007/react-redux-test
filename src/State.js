@@ -17,7 +17,8 @@ const State = {
   ],
   isCardFlipped: false,
   userPoints: 0,
-  botPoints: 0
+  botPoints: 0,
+  gameLeft: 5
 }
 
 export default State

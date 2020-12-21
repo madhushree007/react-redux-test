@@ -1,14 +1,59 @@
 @import url('https://fonts.googleapis.com/css2?family=Playball&display=swap');
-.container { 
+.login { 
   display: flex;
   justify-content: center;
+  text-align: center;
+
   .inner {
-  width: 420px;
-  height: 654px;
-  margin-top: 50px;
-  background: url('../../assets/bg.jpg');
-  font-family: 'Playball', cursive;
-  font-size: 18px;
-  font-weight: 200;
+    min-width: 420px;
+    height: 654px;
+    margin-top: 50px;
+    background-image: url('../../assets/bg.jpg');
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+  .formDiv{
+    width: 60%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin-bottom: 30px;
+
+    label {
+      padding-bottom: 10px;
+    }
+
+    input {
+      height: 36px;
+      background: black;
+      color: #FFF;
+      border: 1px solid #b38004;
+      padding: 4px;
+      text-indent: 10px;
+    }
+    :focus{
+      outline: none;
+    }
+    
+    button{
+      margin-top: 10px;
+      background-color: #b38004;
+      color: black;
+      font-size: 20px;
+      padding: 4px 0;
+    }
+
+  }
+}
+
+h1 {
+    font-family: 'Playball', cursive;
+}
+
+@media only screen and (max-width: 400px) {
+  .inner {
+    background-image: none;
   }
 }
