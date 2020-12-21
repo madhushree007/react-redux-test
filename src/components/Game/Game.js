@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { resetBotPoints, resetGameLeft, resetUserPoints, setBotPoint, setCardFlip, setGameLeft, setUserPoint } from '../../actions';
 import BotCard from '../BotCard/BotCard';
 import Card from '../Card/Card';
+import ScoreBoard from '../ScoreBoard';
 import './game.scss';
 
 export default function Game () {
@@ -12,6 +13,7 @@ export default function Game () {
   const botPoints = useSelector(store => store.botPoints);
   const gameLeft = useSelector(store => store.gameLeft);
 
+  const [isNext, setIsNext] = useState(false);
   const [winner, setWinner] = useState(false);
   const [userCard, setUsercard] = useState({});
   const [botCard, setBotcard] = useState({});
@@ -19,6 +21,7 @@ export default function Game () {
   const dispatch = useDispatch();
 
   const calculate = () => {
+    setIsNext(true);
     if(userCard.point > botCard.point) {
       dispatch(setUserPoint())
     } else if(userCard.point < botCard.point) {
@@ -27,7 +30,7 @@ export default function Game () {
   }
 
   const handleGame = () => {
-    if(gameLeft === 0) {
+    if(gameLeft === 1) {
       setWinner(true);
     }
     dispatch(setGameLeft())
@@ -46,6 +49,7 @@ export default function Game () {
     setUsercard(userRandomCard);
     const botRandomCard = choices[Math.floor(Math.random() * choices.length)];
     setBotcard(botRandomCard);
+    setIsNext(false);
   }, [gameLeft])
 
   return (
@@ -67,14 +71,9 @@ export default function Game () {
           
       </div>
 
-      <button onClick={handleGame}>Next</button>
+      {isNext ? <button onClick={handleGame} className='nextBtn'>Next</button> : '' }
 
-     <div className='modal' style={{display: winner ? 'block' : 'none'}}>
-        <div className='modal-content'>
-          Congratulation you are the winner!
-          <button onClick={handleGameRestart}>Start Again</button>
-        </div>
-      </div>
+     {winner ? <ScoreBoard handleGameRestart={handleGameRestart} /> : '' }
      
     </div>
   )
