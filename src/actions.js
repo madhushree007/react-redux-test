@@ -4,6 +4,11 @@ exports.addUser = (name) => {
     username: name
   }
 }
+exports.logOut = () => {
+  return {
+    type: "USER_LOGOUT"
+  }
+}
 exports.setCardFlip = (isCardFlipped) => {
   return {
     type: "SET_FLIPPED",

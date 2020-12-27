@@ -15,7 +15,7 @@ export default function BotCard ({name, calculate}) {
       const timer = setTimeout(() => {
         setIsFlipped(true);
         calculate(); 
-      }, 1000);
+      }, 600);
       return () => clearTimeout(timer);
     }
 }, [isCardFlipped, gameLeft])

@@ -1,7 +1,7 @@
 const State = {
   username: '',
   choices: [
-    {id: 1, name: 'one', point: 1},
+    {id: 1, name: 'one', point: 14},
     {id: 2, name: 'two', point: 2},
     {id: 3, name: 'three', point: 3},
     {id: 4, name: 'four', point: 4},

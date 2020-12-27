@@ -52,8 +52,12 @@ h1 {
     font-family: 'Playball', cursive;
 }
 
-@media only screen and (max-width: 400px) {
+@media screen and (max-width: 724px) {
+  .login { 
   .inner {
-    background-image: none;
+   background-size: 80%;
+   background-repeat: no-repeat;
+   background-position: center;
   }
+}
 }

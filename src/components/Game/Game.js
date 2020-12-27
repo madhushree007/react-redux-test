@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { resetBotPoints, resetGameLeft, resetUserPoints, setBotPoint, setCardFlip, setGameLeft, setUserPoint } from '../../actions';
+import { logOut, resetBotPoints, resetGameLeft, resetUserPoints, setBotPoint, setCardFlip, setGameLeft, setUserPoint } from '../../actions';
 import BotCard from '../BotCard/BotCard';
 import Card from '../Card/Card';
 import ScoreBoard from '../ScoreBoard';
@@ -54,25 +54,30 @@ export default function Game () {
 
   return (
     <div className='game'>
-      <h2>Hello {user}!</h2>
+      <div className='gameHeader'>
+        <h2>Hello {user}!</h2>
+        <h5 className='logout' onClick={() => dispatch(logOut())}>Logout</h5>
+      </div>
+      
       <h3>Let's play card game with computer.</h3>
-      <p>To start the game click on your card and then computer will reveal his card, whoever's card is bigger gets one point. In case both gets same card, no one get any point. There are 5 turns.</p>
+      <p>To start the game click on your card and then computer will reveal it's card, whoever's card is bigger gets one point. In case both gets same card, no one get any point. There are 5 turns.</p>
       <p>{gameLeft === 0 ? 'Game over' : `Game left ${gameLeft}`}</p>
 
       <div className='cards'>
         <div>
-          <p>Your points: {userPoints}</p>
+          <p className='points'>Your points: {userPoints}</p>
           <Card name={userCard.name} />
         </div>
         <div>
-          <p>Computer's points: {botPoints}</p>
+          <p className='points'>Computer's points: {botPoints}</p>
           <BotCard name={botCard.name} calculate={calculate} />
         </div> 
           
       </div>
 
-      {isNext ? <button onClick={handleGame} className='nextBtn'>Next</button> : '' }
-
+      <div className='footer'>
+        {isNext ? <button onClick={handleGame} className='nextBtn'>Next</button> : '' }
+      </div>
      {winner ? <ScoreBoard handleGameRestart={handleGameRestart} /> : '' }
      
     </div>

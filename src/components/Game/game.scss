@@ -3,10 +3,32 @@
   justify-content: space-between;
 }
 
-.nextBtn {
-  align-self: center;
+.footer {
+  display: flex;
+  justify-content: center;
 }
-
+.gameHeader{
+  display: flex;
+  justify-content: space-between
+}
+h5.logout
+  {
+    cursor: pointer;
+    
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+p.points {
+  font-weight: 600;
+  font-size: 20px;
+}
+.nextBtn {
+    background-color: #b38004;
+    color: black;
+      font-size: 20px;
+      padding: 8px 20px;
+  }
 .modal {
   position: fixed; 
   z-index: 1; 
@@ -27,5 +49,15 @@
   border: 1px solid #888;
   border-radius: 20px;
   width: 60%; /* Could be more or less, depending on screen size */
-  height: 6 00px
+  height: 600px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+@media screen and (max-width: 600px) {
+  .cards {
+   flex-direction: column;
+}
 }
