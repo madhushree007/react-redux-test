@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { logOut, resetBotPoints, resetGameLeft, resetUserPoints, setBotPoint, setCardFlip, setGameLeft, setUserPoint } from '../../actions';
 import BotCard from '../BotCard/BotCard';
@@ -20,14 +20,14 @@ export default function Game () {
 
   const dispatch = useDispatch();
 
-  const calculate = () => {
+  const calculate = useCallback(() => {
     setIsNext(true);
     if(userCard.point > botCard.point) {
       dispatch(setUserPoint())
     } else if(userCard.point < botCard.point) {
       dispatch(setBotPoint())
     }
-  }
+  }, [userCard.point, botCard.point, dispatch])
 
   const handleGame = () => {
     if(gameLeft === 1) {
@@ -50,7 +50,7 @@ export default function Game () {
     const botRandomCard = choices[Math.floor(Math.random() * choices.length)];
     setBotcard(botRandomCard);
     setIsNext(false);
-  }, [gameLeft])
+  }, [gameLeft, choices])
 
   return (
     <div className='game'>

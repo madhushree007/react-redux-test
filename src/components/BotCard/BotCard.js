@@ -1,12 +1,11 @@
 import { useEffect, useState } from 'react';
 import ReactCardFlip from 'react-card-flip';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 export default function BotCard ({name, calculate}) {
   const gameLeft = useSelector(store => store.gameLeft);
   const [isFlipped, setIsFlipped] = useState(false);
   const isCardFlipped = useSelector(store => store.isCardFlipped);
-  const dispatch = useDispatch();
 
   useEffect(() => {
     setIsFlipped(false);
@@ -18,7 +17,7 @@ export default function BotCard ({name, calculate}) {
       }, 600);
       return () => clearTimeout(timer);
     }
-}, [isCardFlipped, gameLeft])
+}, [isCardFlipped, gameLeft, calculate])
 
   return (
     <ReactCardFlip isFlipped={isFlipped} flipDirection="horizontal">

@@ -21,7 +21,7 @@ export default function Login () {
           </div>
 
         <form className='formDiv' onSubmit={onSubmit}>
-          <label for='firstName'>Please Enter Your Name</label>
+          <label htmlFor='firstName'>Please Enter Your Name</label>
           <input name="firstName" value={user} onChange={e => setUser(e.target.value)}  />
           <button type="submit">ENTER</button>
         </form>
