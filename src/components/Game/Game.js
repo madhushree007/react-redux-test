@@ -7,12 +7,14 @@ import ScoreBoard from '../ScoreBoard';
 import './game.scss';
 
 export default function Game () {
+  // Get values from global store
   const user = useSelector(store => store.username);
   const choices = useSelector(store => store.choices);
   const userPoints = useSelector(store => store.userPoints);
   const botPoints = useSelector(store => store.botPoints);
   const gameLeft = useSelector(store => store.gameLeft);
 
+  // Set local state
   const [isNext, setIsNext] = useState(false);
   const [winner, setWinner] = useState(false);
   const [userCard, setUsercard] = useState({});
@@ -20,6 +22,7 @@ export default function Game () {
 
   const dispatch = useDispatch();
 
+  // Calculate the game points
   const calculate = useCallback(() => {
     setIsNext(true);
     if(userCard.point > botCard.point) {
@@ -29,6 +32,7 @@ export default function Game () {
     }
   }, [userCard.point, botCard.point, dispatch])
 
+  // Setting the winner and reset the game left state
   const handleGame = () => {
     if(gameLeft === 1) {
       setWinner(true);
@@ -37,6 +41,7 @@ export default function Game () {
     dispatch(setCardFlip(false))
   }
 
+  // Resetting the game state
   const handleGameRestart = () => {
     dispatch(resetGameLeft())
     dispatch(resetUserPoints())
@@ -44,6 +49,7 @@ export default function Game () {
     setWinner(false);
   }
 
+  // Initialising the game with random card for User and Computer
   useEffect(() => {
     const userRandomCard = choices[Math.floor(Math.random() * choices.length)];
     setUsercard(userRandomCard);
