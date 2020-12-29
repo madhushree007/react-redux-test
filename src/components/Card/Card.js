@@ -22,11 +22,11 @@ export default function Card ({name}) {
   return (
     <ReactCardFlip isFlipped={isFlipped} flipDirection="horizontal">
         <div>
-          <img src={"../../assets/cardBg.jpg"} alt='bg' onClick={handleClick} />
+          <img src={"./assets/cardBg.jpg"} alt='bg' onClick={handleClick} />
         </div>
  
         <div>
-          <img src={`../../assets/${name}.jpg`} alt='front' />
+          <img src={`./assets/${name}.jpg`} alt='front' />
         </div>
       </ReactCardFlip>
   )
