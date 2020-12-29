@@ -22,11 +22,11 @@ export default function BotCard ({name, calculate}) {
   return (
     <ReactCardFlip isFlipped={isFlipped} flipDirection="horizontal">
         <div>
-          <img src={"/assets/cardBg.jpg"} alt='bg' />
+          <img src={"./assets/cardBg.jpg"} alt='bg' />
         </div>
  
         <div>
-          <img src={`/assets/bot/${name}.jpg`} alt='bg' />
+          <img src={`./assets/bot/${name}.jpg`} alt='bg' />
         </div>
       </ReactCardFlip>
   )
